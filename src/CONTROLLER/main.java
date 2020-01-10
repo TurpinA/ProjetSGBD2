@@ -15,11 +15,6 @@ public class main {
 		entityManagerFactory = Persistence.createEntityManagerFactory("test");
 		em = entityManagerFactory.createEntityManager();
 
-		Tarif test2 = new Tarif("DEBUT",8.25);
-
-		TarifActionBD.create(test2);
-		test2.setCode("FIN");
-		TarifActionBD.update(test2);
 	}
 
 }

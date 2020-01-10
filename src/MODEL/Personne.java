@@ -61,7 +61,7 @@ public class Personne {
         return compteursListe;
     }
 
-    public void setCompteursListe(ArrayList<CompteurElectrique> compteursListe) {
+    public void setCompteursListe(List<CompteurElectrique> compteursListe) {
         this.compteursListe = compteursListe;
     }
 }
