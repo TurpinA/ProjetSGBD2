@@ -11,4 +11,39 @@ public class Tarif {
 
     private String code;
     private Double prix;
+
+    public Tarif(int ID, String code, Double prix) {
+        this.ID = ID;
+        this.code = code;
+        this.prix = prix;
+    }
+
+    public Tarif(String code, Double prix) {
+        this.code = code;
+        this.prix = prix;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public Double getPrix() {
+        return prix;
+    }
+
+    public void setPrix(Double prix) {
+        this.prix = prix;
+    }
 }
