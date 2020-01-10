@@ -6,9 +6,12 @@ import javax.persistence.Persistence;
 
 public class main {
 
+	public static EntityManagerFactory entityManagerFactory;
+	public static EntityManager em;
+
 	public static void main(String[] args) {
-		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("test");
-		EntityManager em = entityManagerFactory.createEntityManager();
+		entityManagerFactory = Persistence.createEntityManagerFactory("test");
+		em = entityManagerFactory.createEntityManager();
 
 	}
 
