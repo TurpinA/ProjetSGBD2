@@ -2,6 +2,7 @@ package MODEL;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Personne {
@@ -14,23 +15,21 @@ public class Personne {
     private String adresse;
     private String numeroTel;
 
-    private ArrayList<PlageHorraire> consomation;
-    private ArrayList<CompteurElectrique> compteursListe;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "personneAssocie")
+    private List<CompteurElectrique> compteursListe;
 
-    public Personne(int ID, String numeroSecu, String adresse, String numeroTel, ArrayList<PlageHorraire> consomation, ArrayList<CompteurElectrique> compteursListe) {
+    public Personne(int ID, String numeroSecu, String adresse, String numeroTel, ArrayList<CompteurElectrique> compteursListe) {
         this.ID = ID;
         this.numeroSecu = numeroSecu;
         this.adresse = adresse;
         this.numeroTel = numeroTel;
-        this.consomation = consomation;
         this.compteursListe = compteursListe;
     }
 
-    public Personne(String numeroSecu, String adresse, String numeroTel, ArrayList<PlageHorraire> consomation, ArrayList<CompteurElectrique> compteursListe) {
+    public Personne(String numeroSecu, String adresse, String numeroTel, ArrayList<CompteurElectrique> compteursListe) {
         this.numeroSecu = numeroSecu;
         this.adresse = adresse;
         this.numeroTel = numeroTel;
-        this.consomation = consomation;
         this.compteursListe = compteursListe;
     }
 
@@ -66,15 +65,7 @@ public class Personne {
         this.numeroTel = numeroTel;
     }
 
-    public ArrayList<PlageHorraire> getConsomation() {
-        return consomation;
-    }
-
-    public void setConsomation(ArrayList<PlageHorraire> consomation) {
-        this.consomation = consomation;
-    }
-
-    public ArrayList<CompteurElectrique> getCompteursListe() {
+    public List<CompteurElectrique> getCompteursListe() {
         return compteursListe;
     }
 

@@ -1,8 +1,8 @@
 package MODEL;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class CompteurElectrique {
@@ -15,5 +15,8 @@ public class CompteurElectrique {
     private String adresse;
     private Date dateActivation;
 
+    @ManyToOne
     private Personne personneAssocie;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "compteur")
+    private List<PlageHorraire> consomation;
 }
