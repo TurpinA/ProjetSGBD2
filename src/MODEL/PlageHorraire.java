@@ -19,15 +19,6 @@ public class PlageHorraire {
     @ManyToOne
     private CompteurElectrique compteur;
 
-    public PlageHorraire(int ID, Date date, LocalTime heureDebut, LocalTime heureFin, Double puissanceConsomme, CompteurElectrique compteur) {
-        this.ID = ID;
-        this.date = date;
-        this.heureDebut = heureDebut;
-        this.heureFin = heureFin;
-        this.puissanceConsomme = puissanceConsomme;
-        this.compteur = compteur;
-    }
-
     public PlageHorraire(Date date, LocalTime heureDebut, LocalTime heureFin, Double puissanceConsomme, CompteurElectrique compteur) {
         this.date = date;
         this.heureDebut = heureDebut;

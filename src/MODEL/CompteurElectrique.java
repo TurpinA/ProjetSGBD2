@@ -20,15 +20,6 @@ public class CompteurElectrique {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "compteur")
     private List<PlageHorraire> consomation;
 
-    public CompteurElectrique(int ID, String numeroCompteur, String adresse, Date dateActivation, Personne personneAssocie, List<PlageHorraire> consomation) {
-        this.ID = ID;
-        this.numeroCompteur = numeroCompteur;
-        this.adresse = adresse;
-        this.dateActivation = dateActivation;
-        this.personneAssocie = personneAssocie;
-        this.consomation = consomation;
-    }
-
     public CompteurElectrique(String numeroCompteur, String adresse, Date dateActivation, Personne personneAssocie, List<PlageHorraire> consomation) {
         this.numeroCompteur = numeroCompteur;
         this.adresse = adresse;

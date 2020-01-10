@@ -12,12 +12,6 @@ public class Tarif {
     private String code;
     private Double prix;
 
-    public Tarif(int ID, String code, Double prix) {
-        this.ID = ID;
-        this.code = code;
-        this.prix = prix;
-    }
-
     public Tarif(String code, Double prix) {
         this.code = code;
         this.prix = prix;

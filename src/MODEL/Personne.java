@@ -18,14 +18,6 @@ public class Personne {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "personneAssocie")
     private List<CompteurElectrique> compteursListe;
 
-    public Personne(int ID, String numeroSecu, String adresse, String numeroTel, ArrayList<CompteurElectrique> compteursListe) {
-        this.ID = ID;
-        this.numeroSecu = numeroSecu;
-        this.adresse = adresse;
-        this.numeroTel = numeroTel;
-        this.compteursListe = compteursListe;
-    }
-
     public Personne(String numeroSecu, String adresse, String numeroTel, ArrayList<CompteurElectrique> compteursListe) {
         this.numeroSecu = numeroSecu;
         this.adresse = adresse;
