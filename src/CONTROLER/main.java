@@ -1,4 +1,4 @@
-package CONTROLLER;
+package CONTROLER;
 
 import MODEL.Tarif;
 
@@ -12,13 +12,17 @@ public class main {
 	public static EntityManager em;
 
 	public static void main(String[] args) {
-		entityManagerFactory = Persistence.createEntityManagerFactory("test");
+		entityManagerFactory = Persistence.createEntityManagerFactory("bd2");
 		em = entityManagerFactory.createEntityManager();
 
 		Tarif tariftest = new Tarif("ABD",1.3);
 		DAOTarif daoTarif = new DAOTarif();
 		daoTarif.create(tariftest);
-		tariftest.setCode("ABDED");
+		em.getTransaction().begin();
+		tariftest.setCode("ABDEC");
+		em.getTransaction().commit();
+
+
 
 	}
 

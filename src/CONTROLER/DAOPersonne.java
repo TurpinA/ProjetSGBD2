@@ -1,4 +1,4 @@
-package CONTROLLER;
+package CONTROLER;
 
 import MODEL.Personne;
 
@@ -6,13 +6,13 @@ import java.util.NoSuchElementException;
 
 public class DAOPersonne {
 
-    public static void create(Personne personne){
+    public void create(Personne personne){
         main.em.getTransaction().begin();
         main.em.persist(personne);
         main.em.getTransaction().commit();
     }
 
-    public static void update(Personne personne){
+    public void update(Personne personne){
         main.em.getTransaction().begin();
         Personne personneAModifier = find(personne);
         personneAModifier.setAdresse(personne.getAdresse());
@@ -22,19 +22,19 @@ public class DAOPersonne {
         main.em.getTransaction().commit();
     }
 
-    public static void delete(Personne personne){
+    public void delete(Personne personne){
         main.em.getTransaction().begin();
         Personne personneASupprimer = find(personne);
         main.em.remove(personneASupprimer);
         main.em.getTransaction().commit();
     }
 
-    public static Personne find(Personne personne){
-        Personne personne1 = main.em.find(Personne.class,personne.getID());
+    public Personne find(Personne personne){
+        Personne personneToFind = main.em.find(Personne.class,personne.getID());
 
-        if(personne1 == null)
+        if(personneToFind == null)
             throw new NoSuchElementException("L'objet Personne est introuvable dans la base de données");
 
-        return personne1;
+        return personneToFind;
     }
 }

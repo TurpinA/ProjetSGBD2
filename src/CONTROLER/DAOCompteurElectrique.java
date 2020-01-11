@@ -1,4 +1,4 @@
-package CONTROLLER;
+package CONTROLER;
 
 public class DAOCompteurElectrique {
 }
