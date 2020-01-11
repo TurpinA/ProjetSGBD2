@@ -11,17 +11,19 @@ public class Personne {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int ID;
 
-    private String numeroSecu;
+    private String numeroSecuriteSocial;
     private String adresse;
-    private String numeroTel;
+    private String numeroTelephone;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "personneAssocie")
     private List<CompteurElectrique> compteursListe;
 
-    public Personne(String numeroSecu, String adresse, String numeroTel, ArrayList<CompteurElectrique> compteursListe) {
-        this.numeroSecu = numeroSecu;
+    public Personne(){}
+
+    public Personne(String numeroSecuriteSocial, String adresse, String numeroTelephone, ArrayList<CompteurElectrique> compteursListe) {
+        this.numeroSecuriteSocial = numeroSecuriteSocial;
         this.adresse = adresse;
-        this.numeroTel = numeroTel;
+        this.numeroTelephone = numeroTelephone;
         this.compteursListe = compteursListe;
     }
 
@@ -33,12 +35,12 @@ public class Personne {
         this.ID = ID;
     }
 
-    public String getNumeroSecu() {
-        return numeroSecu;
+    public String getNumeroSecuriteSocial() {
+        return numeroSecuriteSocial;
     }
 
-    public void setNumeroSecu(String numeroSecu) {
-        this.numeroSecu = numeroSecu;
+    public void setNumeroSecuriteSocial(String NumeroSecuriteSocial) {
+        this.numeroSecuriteSocial = NumeroSecuriteSocial;
     }
 
     public String getAdresse() {
@@ -49,12 +51,12 @@ public class Personne {
         this.adresse = adresse;
     }
 
-    public String getNumeroTel() {
-        return numeroTel;
+    public String getNumeroTelephone() {
+        return numeroTelephone;
     }
 
-    public void setNumeroTel(String numeroTel) {
-        this.numeroTel = numeroTel;
+    public void setNumeroTelephone(String numeroTel) {
+        this.numeroTelephone = numeroTel;
     }
 
     public List<CompteurElectrique> getCompteursListe() {

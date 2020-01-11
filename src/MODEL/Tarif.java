@@ -12,6 +12,10 @@ public class Tarif {
     private String code;
     private Double prix;
 
+    public Tarif(){
+
+    }
+
     public Tarif(String code, Double prix) {
         this.code = code;
         this.prix = prix;

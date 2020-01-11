@@ -17,15 +17,17 @@ public class CompteurElectrique {
 
     @ManyToOne
     private Personne personneAssocie;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "compteur")
-    private List<PlageHorraire> consomation;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "Compteur")
+    private List<PlageHoraire> consommation;
 
-    public CompteurElectrique(String numeroCompteur, String adresse, Date dateActivation, Personne personneAssocie, List<PlageHorraire> consomation) {
+    public CompteurElectrique(){}
+
+    public CompteurElectrique(String numeroCompteur, String adresse, Date dateActivation, Personne personneAssocie, List<PlageHoraire> Consommation) {
         this.numeroCompteur = numeroCompteur;
         this.adresse = adresse;
         this.dateActivation = dateActivation;
         this.personneAssocie = personneAssocie;
-        this.consomation = consomation;
+        this.consommation = Consommation;
     }
 
     public int getID() {
@@ -68,11 +70,11 @@ public class CompteurElectrique {
         this.personneAssocie = personneAssocie;
     }
 
-    public List<PlageHorraire> getConsomation() {
-        return consomation;
+    public List<PlageHoraire> getConsommation() {
+        return consommation;
     }
 
-    public void setConsomation(List<PlageHorraire> consomation) {
-        this.consomation = consomation;
+    public void setConsommation(List<PlageHoraire> consomation) {
+        this.consommation = consomation;
     }
 }

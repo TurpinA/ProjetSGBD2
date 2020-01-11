@@ -5,7 +5,7 @@ import java.time.LocalTime;
 import java.util.Date;
 
 @Entity
-public class PlageHorraire {
+public class PlageHoraire {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -14,17 +14,21 @@ public class PlageHorraire {
     private Date date;
     private LocalTime heureDebut;
     private LocalTime heureFin;
-    private Double puissanceConsomme;
+    private Double puissanceConsommee;
 
     @ManyToOne
-    private CompteurElectrique compteur;
+    private CompteurElectrique Compteur;
 
-    public PlageHorraire(Date date, LocalTime heureDebut, LocalTime heureFin, Double puissanceConsomme, CompteurElectrique compteur) {
+    public PlageHoraire(){
+
+    }
+
+    public PlageHoraire(Date date, LocalTime heureDebut, LocalTime heureFin, Double puissanceConsomme, CompteurElectrique compteur) {
         this.date = date;
         this.heureDebut = heureDebut;
         this.heureFin = heureFin;
-        this.puissanceConsomme = puissanceConsomme;
-        this.compteur = compteur;
+        this.puissanceConsommee = puissanceConsomme;
+        this.Compteur = compteur;
     }
 
     public int getID() {
@@ -59,19 +63,19 @@ public class PlageHorraire {
         this.heureFin = heureFin;
     }
 
-    public Double getPuissanceConsomme() {
-        return puissanceConsomme;
+    public Double getPuissanceConsommee() {
+        return puissanceConsommee;
     }
 
-    public void setPuissanceConsomme(Double puissanceConsomme) {
-        this.puissanceConsomme = puissanceConsomme;
+    public void setPuissanceConsommee(Double puissanceConsomme) {
+        this.puissanceConsommee = puissanceConsomme;
     }
 
     public CompteurElectrique getCompteur() {
-        return compteur;
+        return Compteur;
     }
 
     public void setCompteur(CompteurElectrique compteur) {
-        this.compteur = compteur;
+        this.Compteur = compteur;
     }
 }

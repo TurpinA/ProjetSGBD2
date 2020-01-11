@@ -1,11 +1,10 @@
 package CONTROLLER;
 
 import MODEL.Personne;
-import MODEL.Tarif;
 
 import java.util.NoSuchElementException;
 
-public class PersonneActionBD {
+public class DAOPersonne {
 
     public static void create(Personne personne){
         main.em.getTransaction().begin();
@@ -18,8 +17,8 @@ public class PersonneActionBD {
         Personne personneAModifier = find(personne);
         personneAModifier.setAdresse(personne.getAdresse());
         personneAModifier.setCompteursListe(personne.getCompteursListe());
-        personneAModifier.setNumeroSecu(personne.getNumeroSecu());
-        personneAModifier.setNumeroTel(personne.getNumeroTel());
+        personneAModifier.setNumeroSecuriteSocial(personne.getNumeroSecuriteSocial());
+        personneAModifier.setNumeroTelephone(personne.getNumeroTelephone());
         main.em.getTransaction().commit();
     }
 

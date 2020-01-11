@@ -4,7 +4,7 @@ import MODEL.Tarif;
 
 import java.util.NoSuchElementException;
 
-public class TarifActionBD {
+public class DAOTarif {
 
     public static void create(Tarif tarif){
         main.em.getTransaction().begin();
@@ -14,8 +14,8 @@ public class TarifActionBD {
 
     public static void update(Tarif tarif){
         main.em.getTransaction().begin();
-        Tarif tarifAModifier = find(tarif);
-        tarifAModifier = tarif;
+        Tarif tarifToUpdate = find(tarif);
+        tarifToUpdate = tarif;
         main.em.getTransaction().commit();
     }
 

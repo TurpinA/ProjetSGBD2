@@ -15,6 +15,11 @@ public class main {
 		entityManagerFactory = Persistence.createEntityManagerFactory("test");
 		em = entityManagerFactory.createEntityManager();
 
+		Tarif tariftest = new Tarif("ABD",1.3);
+		DAOTarif daoTarif = new DAOTarif();
+		daoTarif.create(tariftest);
+		tariftest.setCode("ABDED");
+
 	}
 
 }
