@@ -15,7 +15,8 @@ public class DAOTarif {
     public void update(Tarif tarif){
         main.em.getTransaction().begin();
         Tarif tarifToUpdate = find(tarif);
-        tarifToUpdate = tarif;
+        tarifToUpdate.setCode(tarif.getCode());
+        tarifToUpdate.setPrix(tarif.getPrix());
         main.em.getTransaction().commit();
     }
 

@@ -15,7 +15,11 @@ public class DAOPlageHoraire {
     public void update(PlageHoraire plageHoraireBD){
         main.em.getTransaction().begin();
         PlageHoraire plageHoraireBDToFind = find(plageHoraireBD);
-        plageHoraireBDToFind = plageHoraireBD;
+        plageHoraireBDToFind.setCompteur(plageHoraireBD.getCompteur());
+        plageHoraireBDToFind.setDate(plageHoraireBD.getDate());
+        plageHoraireBDToFind.setHeureDebut(plageHoraireBD.getHeureDebut());
+        plageHoraireBDToFind.setHeureFin(plageHoraireBD.getHeureFin());
+        plageHoraireBDToFind.setPuissanceConsommee(plageHoraireBD.getPuissanceConsommee());
         main.em.getTransaction().commit();
     }
 
