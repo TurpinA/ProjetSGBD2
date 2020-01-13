@@ -2,6 +2,9 @@ package CONTROLER;
 
 import MODEL.CompteurElectrique;
 
+import javax.persistence.Query;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 public class DAOCompteurElectrique {
@@ -37,5 +40,15 @@ public class DAOCompteurElectrique {
             throw new NoSuchElementException("L'objet CompteurElectrique est introuvable dans la base de données");
 
         return compteurElectriqueToUpdate;
+    }
+
+    public List<CompteurElectrique> getAll(){
+
+        main.em.getTransaction().begin();
+        String hql = "FROM CompteurElectrique";
+        Query query = main.em.createQuery(hql);
+        List<CompteurElectrique> listCompteur = query.getResultList();
+        main.em.getTransaction().commit();
+        return listCompteur;
     }
 }

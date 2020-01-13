@@ -66,4 +66,9 @@ public class Personne {
     public void setCompteursListe(List<CompteurElectrique> compteursListe) {
         this.compteursListe = compteursListe;
     }
+
+    @Override
+    public String toString(){
+        return String.valueOf(numeroSecuriteSocial);
+    }
 }
