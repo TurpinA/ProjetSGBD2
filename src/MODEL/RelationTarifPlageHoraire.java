@@ -33,4 +33,6 @@ public class RelationTarifPlageHoraire {
     public void setConsommation(Double consommation) {
         this.consommation = consommation;
     }
+
+    public Tarif getTarif(){return tarif;}
 }

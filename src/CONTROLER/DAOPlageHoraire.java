@@ -1,9 +1,15 @@
 package CONTROLER;
 
+import MODEL.CompteurElectrique;
 import MODEL.Personne;
 import MODEL.PlageHoraire;
+import MODEL.RelationTarifPlageHoraire;
 
 import javax.persistence.Query;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -49,6 +55,33 @@ public class DAOPlageHoraire {
         List<PlageHoraire> listPlageHorraire = query.getResultList();
         main.em.getTransaction().commit();
         return listPlageHorraire;
+    }
+
+    public Double[] getFromCompteurAndDate(CompteurElectrique compteur, LocalDate date){
+
+        main.em.getTransaction().begin();
+        String datehql = date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")) + " 00:00:00";
+        String hql = "from PlageHoraire as plage where plage.Compteur.numeroCompteur = "+compteur.getNumeroCompteur()+" and plage.date = "+datehql+"";
+        Query query = main.em.createQuery(hql);
+        @SuppressWarnings("unchecked")
+        List<PlageHoraire> listPlageHoraire = query.getResultList();
+        main.em.getTransaction().commit();
+
+        Double puissanceconsommer = 0.0;
+        Double prix = 0.0;
+
+        for (PlageHoraire plage :
+                listPlageHoraire) {
+            for (RelationTarifPlageHoraire relation :
+                    plage.getRelationTarifPlageHoraires()) {
+                puissanceconsommer += relation.getConsommation();
+                prix = prix + relation.getConsommation()*relation.getTarif().getPrix();
+            }
+        }
+
+        Double [] result = {puissanceconsommer, prix};
+
+        return result;
     }
 
 }
