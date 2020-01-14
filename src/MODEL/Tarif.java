@@ -1,6 +1,7 @@
 package MODEL;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Tarif {
@@ -11,14 +12,19 @@ public class Tarif {
 
     private String code;
     private Double prix;
+    private CategoriesTarif categoriesTarif;
+
+    @OneToMany(mappedBy = "tarif")
+    private Set<RelationTarifPlageHorraire> relationTarifPlageHorraires;
 
     public Tarif(){
 
     }
 
-    public Tarif(String code, Double prix) {
+    public Tarif(String code, Double prix,CategoriesTarif categoriesTarif) {
         this.code = code;
         this.prix = prix;
+        this.categoriesTarif = categoriesTarif;
     }
 
     public int getID() {
@@ -43,5 +49,13 @@ public class Tarif {
 
     public void setPrix(Double prix) {
         this.prix = prix;
+    }
+
+    public CategoriesTarif getCategoriesTarif() {
+        return categoriesTarif;
+    }
+
+    public void setCategoriesTarif(CategoriesTarif categoriesTarif) {
+        this.categoriesTarif = categoriesTarif;
     }
 }

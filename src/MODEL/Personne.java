@@ -16,7 +16,7 @@ public class Personne {
     private String numeroTelephone;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "personneAssocie")
-    private List<CompteurElectrique> compteursListe;
+    private List<CompteurElectrique> compteursListe = new ArrayList<>();
 
     public Personne(){}
 

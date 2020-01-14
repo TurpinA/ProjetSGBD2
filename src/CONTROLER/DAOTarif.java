@@ -17,6 +17,7 @@ public class DAOTarif {
         Tarif tarifToUpdate = find(tarif);
         tarifToUpdate.setCode(tarif.getCode());
         tarifToUpdate.setPrix(tarif.getPrix());
+        tarifToUpdate.setCategoriesTarif(tarif.getCategoriesTarif());
         main.em.getTransaction().commit();
     }
 

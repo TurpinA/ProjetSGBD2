@@ -1,6 +1,7 @@
 package MODEL;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class CompteurElectrique {
     @ManyToOne
     private Personne personneAssocie;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "Compteur")
-    private List<PlageHoraire> consommation;
+    private List<PlageHoraire> consommation = new ArrayList<>();
 
     public CompteurElectrique(){}
 

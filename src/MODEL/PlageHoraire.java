@@ -3,6 +3,7 @@ package MODEL;
 import javax.persistence.*;
 import java.time.LocalTime;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 public class PlageHoraire {
@@ -18,6 +19,9 @@ public class PlageHoraire {
 
     @ManyToOne
     private CompteurElectrique Compteur;
+
+    @OneToMany(mappedBy = "plageHoraire")
+    private Set<RelationTarifPlageHorraire> relationTarifPlageHorraires;
 
     public PlageHoraire(){
 
