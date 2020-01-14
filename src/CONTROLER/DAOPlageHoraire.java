@@ -1,7 +1,10 @@
 package CONTROLER;
 
+import MODEL.Personne;
 import MODEL.PlageHoraire;
 
+import javax.persistence.Query;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 public class DAOPlageHoraire {
@@ -37,6 +40,15 @@ public class DAOPlageHoraire {
             throw new NoSuchElementException("L'objet PlageHoraire est introuvable dans la base de données");
 
         return plageHoraireBD;
+    }
+
+    public List<PlageHoraire> getAll(){
+        main.em.getTransaction().begin();
+        String hql = "FROM PlageHoraire";
+        Query query = main.em.createQuery(hql);
+        List<PlageHoraire> listPlageHorraire = query.getResultList();
+        main.em.getTransaction().commit();
+        return listPlageHorraire;
     }
 
 }

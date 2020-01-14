@@ -25,7 +25,7 @@
                               <Insets left="5.0" right="5.0" />
                            </HBox.margin>
                         </Label>
-                        <ComboBox prefHeight="26.0" prefWidth="232.0" />
+                        <ComboBox fx:id="numeroCompteur" prefHeight="26.0" prefWidth="232.0" />
                      </children>
                      <VBox.margin>
                         <Insets />
@@ -38,7 +38,7 @@
                               <Insets right="49.0" />
                            </HBox.margin>
                         </Label>
-                        <DatePicker />
+                        <DatePicker fx:id="date" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="44.0" prefWidth="451.0">
@@ -48,7 +48,7 @@
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <JFXTimePicker defaultColor="BLACK">
+                        <JFXTimePicker fx:id="heureDebut" defaultColor="BLACK">
                            <HBox.margin>
                               <Insets left="5.0" />
                            </HBox.margin>
@@ -62,7 +62,7 @@
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <JFXTimePicker defaultColor="BLACK">
+                        <JFXTimePicker fx:id="heureFin" defaultColor="BLACK">
                            <HBox.margin>
                               <Insets left="5.0" />
                            </HBox.margin>
@@ -76,7 +76,7 @@
                               <Insets right="5.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField />
+                        <TextField fx:id="consomation" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="44.0" prefWidth="451.0">
@@ -86,7 +86,7 @@
                               <Insets right="5.0" />
                            </HBox.margin>
                         </Label>
-                        <ComboBox prefHeight="26.0" prefWidth="82.0">
+                        <ComboBox fx:id="tarifPlein" prefHeight="26.0" prefWidth="82.0">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>
@@ -96,17 +96,17 @@
                               <Insets right="5.0" />
                            </HBox.margin>
                         </Label>
-                        <ComboBox prefHeight="26.0" prefWidth="82.0" />
+                        <ComboBox fx:id="tarifCreux" prefHeight="26.0" prefWidth="82.0" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="44.0" prefWidth="451.0">
                      <children>
-                        <Button mnemonicParsing="false" text="Ajouter" onAction="#ajouter">
+                        <Button mnemonicParsing="false" onAction="#ajouter" text="Ajouter">
                            <HBox.margin>
                               <Insets right="50.0" />
                            </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" text="Annuler" onAction="#annuler"/>
+                        <Button mnemonicParsing="false" onAction="#annuler" text="Annuler" />
                      </children>
                   </HBox>
                </children>
