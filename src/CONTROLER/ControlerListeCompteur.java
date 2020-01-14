@@ -73,9 +73,6 @@ public class ControlerListeCompteur {
     public void listCompteurButton(ActionEvent actionEvent) {
     }
 
-    public void tarifButton(ActionEvent actionEvent) {
-    }
-
     public void ajouterButton(ActionEvent actionEvent) {
         Parent root;
         Stage stage = new Stage();
@@ -133,5 +130,26 @@ public class ControlerListeCompteur {
             DAOCompteur.delete(compteurElectriqueASupprimer);
             tableView.getItems().removeAll(tableView.getSelectionModel().getSelectedItems());
         }
+    }
+
+    public void plageConsomationButton(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(new File("IHM/ListePlageConsomation.fxml").toURI().toURL());
+        Parent root = fxmlLoader.load();
+        Scene scene = new Scene(root);
+        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show();
+    }
+
+    public void listTarifButton(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(new File("IHM/ListeTarifs.fxml").toURI().toURL());
+        Parent root = fxmlLoader.load();
+        Scene scene = new Scene(root);
+        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show();
+    }
+
+    public void rechercheConsomationButton(ActionEvent actionEvent) {
     }
 }

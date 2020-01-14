@@ -11,13 +11,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CONTROLER.ControlerListeUtilisateur">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CONTROLER.ControlerListeTarifs">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="150.0" style="-fx-background-color: grey;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="40.0">
          <children>
             <VBox layoutX="25.0" layoutY="39.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Button fx:id="listeUtiButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#ListUtiButton" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: rgb(48, 199, 148); -fx-border-style: none; -fx-background-radius: 0;" text="Liste Utilisateur" textFill="WHITE">
+                  <Button fx:id="listeUtiButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#ListUtiButton" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: rgb(74,87,111); -fx-border-style: none; -fx-background-radius: 0;" text="Liste Utilisateur" textFill="WHITE">
                      <font>
                         <Font name="Noto Sans Regular" size="12.0" />
                      </font>
@@ -42,7 +42,7 @@
                         <Font name="Noto Sans Regular" size="12.0" />
                      </font>
                   </Button>
-                  <Button fx:id="listTarifs" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#listTarifButton" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: rgb(74,87,111); -fx-border-style: none; -fx-background-radius: 0;" text="Liste Tarifs" textFill="WHITE">
+                  <Button fx:id="listTarifs" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#listTarifButton" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: rgb(48, 199, 148); -fx-border-style: none; -fx-background-radius: 0;" text="Liste Tarifs" textFill="WHITE">
                      <font>
                         <Font name="Noto Sans Regular" size="12.0" />
                      </font>
@@ -61,14 +61,14 @@
             <TableView fx:id="tableView" layoutX="7.0" layoutY="49.0" prefHeight="336.0" prefWidth="434.0">
               <columns>
                 <TableColumn fx:id="idColumn" prefWidth="45.5" text="ID" />
-                  <TableColumn fx:id="numSecuColumn" prefWidth="137.0" text="Numero Sécurité Social" />
-                  <TableColumn fx:id="adresseColumn" prefWidth="137.0" text="Adresse" />
-                  <TableColumn fx:id="numTelColumn" prefWidth="113.5" text="Numéro téléphone" />
+                  <TableColumn fx:id="codeColumn" prefWidth="137.0" text="code" />
+                  <TableColumn fx:id="prixColumn" prefWidth="137.0" text="prix" />
+                  <TableColumn fx:id="categorieColumn" prefWidth="113.5" text="Catégorie" />
               </columns>
             </TableView>
-            <Button fx:id="ajouterButton" layoutX="14.0" layoutY="13.0" mnemonicParsing="false" onAction="#ajouterButton" text="Ajouter un utilisateur" />
-            <Button fx:id="modifierButton" layoutX="154.0" layoutY="13.0" mnemonicParsing="false" onAction="#modifierButton" text="Modifier un utilisateur" />
-            <Button fx:id="supprimerButton" layoutX="300.0" layoutY="13.0" mnemonicParsing="false" onAction="#supprimerButton" text="Supprimer un utilisateur" />
+            <Button fx:id="ajouterButton" layoutX="14.0" layoutY="13.0" mnemonicParsing="false" onAction="#ajouterButton" text="Ajouter un tarif" />
+            <Button fx:id="modifierButton" layoutX="154.0" layoutY="13.0" mnemonicParsing="false" onAction="#modifierButton" text="Modifier un tarif" />
+            <Button fx:id="supprimerButton" layoutX="300.0" layoutY="13.0" mnemonicParsing="false" onAction="#supprimerButton" text="Supprimer un tarif" />
          </children></AnchorPane>
       <AnchorPane prefHeight="40.0" prefWidth="400.0" style="-fx-background-color: light_grey;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>

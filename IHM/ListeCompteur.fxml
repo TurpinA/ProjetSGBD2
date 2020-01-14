@@ -32,50 +32,25 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="listeCompteurButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#listCompteurButton" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: rgb(74,87,111); -fx-border-style: none; -fx-background-radius: 0;" text="Liste Compteur" textFill="WHITE">
+                  <Button fx:id="listeCompteurButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#listCompteurButton" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: rgb(48, 199, 148); -fx-border-style: none; -fx-background-radius: 0;" text="Liste Compteur" textFill="WHITE">
                      <font>
                         <Font name="Noto Sans Regular" size="12.0" />
                      </font>
-                     <graphic>
-                        <ImageView fitHeight="22.0" fitWidth="17.0" preserveRatio="true">
-                           <image>
-                              <Image url="@icon/icons8-sell-stock-64.png" />
-                           </image>
-                           <effect>
-                              <ColorAdjust brightness="1.0" />
-                           </effect>
-                        </ImageView>
-                     </graphic>
                   </Button>
-                  <Button fx:id="tarifButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#tarifButton" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: rgb(74,87,111); -fx-border-style: none; -fx-background-radius: 0;" text="Tarif actuel" textFill="WHITE">
+                  <Button fx:id="plageConsomation" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#plageConsomationButton" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: rgb(74,87,111); -fx-border-style: none; -fx-background-radius: 0;" text="Plage de consomation" textFill="WHITE">
                      <font>
                         <Font name="Noto Sans Regular" size="12.0" />
                      </font>
-                     <graphic>
-                        <ImageView fitHeight="22.0" fitWidth="17.0" preserveRatio="true">
-                           <image>
-                              <Image url="@icon/icons8-sell-stock-64.png" />
-                           </image>
-                           <effect>
-                              <ColorAdjust brightness="1.0" />
-                           </effect>
-                        </ImageView>
-                     </graphic>
                   </Button>
-                  <Button fx:id="rechercheButton" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: rgb(74,87,111); -fx-border-style: none; -fx-background-radius: 0;" text="Recherche" textFill="WHITE">
+                  <Button fx:id="listTarifs" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#listTarifButton" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: rgb(74,87,111); -fx-border-style: none; -fx-background-radius: 0;" text="Liste Tarifs" textFill="WHITE">
                      <font>
                         <Font name="Noto Sans Regular" size="12.0" />
                      </font>
-                     <graphic>
-                        <ImageView fitHeight="22.0" fitWidth="17.0" preserveRatio="true">
-                           <image>
-                              <Image url="@icon/icons8-sell-stock-64.png" />
-                           </image>
-                           <effect>
-                              <ColorAdjust brightness="1.0" />
-                           </effect>
-                        </ImageView>
-                     </graphic>
+                  </Button>
+                  <Button fx:id="rechercheConsomation" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#rechercheConsomationButton" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: rgb(74,87,111); -fx-border-style: none; -fx-background-radius: 0;" text="Recherche Consomation" textFill="WHITE">
+                     <font>
+                        <Font name="Noto Sans Regular" size="11.0" />
+                     </font>
                   </Button>
                </children>
             </VBox>
