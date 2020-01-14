@@ -1,6 +1,7 @@
 package MODEL;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -15,7 +16,7 @@ public class Tarif {
     private CategoriesTarif categoriesTarif;
 
     @OneToMany(mappedBy = "tarif")
-    private Set<RelationTarifPlageHorraire> relationTarifPlageHorraires;
+    private Set<RelationTarifPlageHoraire> relationTarifPlageHoraires = new HashSet<>();
 
     public Tarif(){
 
@@ -57,6 +58,14 @@ public class Tarif {
 
     public void setCategoriesTarif(CategoriesTarif categoriesTarif) {
         this.categoriesTarif = categoriesTarif;
+    }
+
+    public Set<RelationTarifPlageHoraire> getRelationTarifPlageHoraires() {
+        return relationTarifPlageHoraires;
+    }
+
+    public void setRelationTarifPlageHoraires(Set<RelationTarifPlageHoraire> relationTarifPlageHoraires) {
+        this.relationTarifPlageHoraires = relationTarifPlageHoraires;
     }
 
     @Override

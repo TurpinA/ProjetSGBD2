@@ -3,6 +3,7 @@ package MODEL;
 import javax.persistence.*;
 import java.time.LocalTime;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -21,7 +22,7 @@ public class PlageHoraire {
     private CompteurElectrique Compteur;
 
     @OneToMany(mappedBy = "plageHoraire")
-    private Set<RelationTarifPlageHorraire> relationTarifPlageHorraires;
+    private Set<RelationTarifPlageHoraire> relationTarifPlageHoraires = new HashSet<>();
 
     public PlageHoraire(){
 
@@ -81,5 +82,13 @@ public class PlageHoraire {
 
     public void setCompteur(CompteurElectrique compteur) {
         this.Compteur = compteur;
+    }
+
+    public Set<RelationTarifPlageHoraire> getRelationTarifPlageHoraires() {
+        return relationTarifPlageHoraires;
+    }
+
+    public void setRelationTarifPlageHoraires(Set<RelationTarifPlageHoraire> relationTarifPlageHoraires) {
+        this.relationTarifPlageHoraires = relationTarifPlageHoraires;
     }
 }
