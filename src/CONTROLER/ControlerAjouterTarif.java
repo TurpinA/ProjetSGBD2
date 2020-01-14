@@ -17,6 +17,7 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.regex.Pattern;
 
 public class ControlerAjouterTarif {
 
@@ -33,8 +34,9 @@ public class ControlerAjouterTarif {
     }
 
     public void ajouter(ActionEvent actionEvent) {
-        if(categorie.getValue() != null) {
-            categorie.setStyle("");
+        boolean valide = testChamp();
+
+        if(valide) {
             DAOTarif daoTarif = new DAOTarif();
 
             Tarif tarifAAjouter = new Tarif();
@@ -47,14 +49,48 @@ public class ControlerAjouterTarif {
             Stage stage = (Stage) ajouterButton.getScene().getWindow();
             stage.close();
         }
-        else
-        {
-            categorie.setStyle("-fx-border-color: red ;");
-        }
     }
 
     public void annuler(ActionEvent actionEvent) {
         Stage stage = (Stage) annulerButton.getScene().getWindow();
         stage.close();
+    }
+
+    public boolean testChamp(){
+        boolean valide = true;
+
+        if(code.getText().isEmpty())
+        {
+            code.setStyle("-fx-border-color: red ;");
+            valide = false;
+        }
+        else
+            code.setStyle("");
+
+        if(!Pattern.matches("[0-9\\.]++$", prix.getText()) || prix.getText().isEmpty()) {
+            prix.setStyle("-fx-border-color: red ;");
+            valide = false;
+        }
+        else {
+            try {
+                Double.parseDouble(prix.getText());
+                prix.setStyle("");
+            }
+            catch(NumberFormatException e)
+            {
+                prix.setStyle("-fx-border-color: red ;");
+                valide = false;
+            }
+        }
+
+        if(categorie.getValue() == null)
+        {
+            categorie.setStyle("-fx-border-color: red ;");
+            valide = false;
+        }
+        else
+            categorie.setStyle("");
+
+        return valide;
     }
 }

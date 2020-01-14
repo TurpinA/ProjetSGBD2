@@ -51,7 +51,7 @@ public class DAOTarif {
 
     public List<Tarif> getAllPlein(){
         main.em.getTransaction().begin();
-        String hql = "FROM Tarif WHERE Tarif.categoriesTarif = C";
+        String hql = "FROM Tarif tarif WHERE tarif.categoriesTarif = 0";
         Query query = main.em.createQuery(hql);
         List<Tarif> listPersonne = query.getResultList();
         main.em.getTransaction().commit();
@@ -60,7 +60,7 @@ public class DAOTarif {
 
     public List<Tarif> getAllCreux(){
         main.em.getTransaction().begin();
-        String hql = "FROM Tarif WHERE Tarif.categoriesTarif = 1";
+        String hql = "FROM Tarif tarif WHERE tarif.categoriesTarif = 1";
         Query query = main.em.createQuery(hql);
         List<Tarif> listPersonne = query.getResultList();
         main.em.getTransaction().commit();

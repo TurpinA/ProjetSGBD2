@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.sql.SQLException;
+import java.util.regex.Pattern;
 
 public class ControlerModifierTarif {
 
@@ -31,7 +32,8 @@ public class ControlerModifierTarif {
     }
 
     public void modifier(ActionEvent actionEvent) {
-        if(categorie.getValue() != null) {
+        boolean valide = testChamp();
+        if(valide) {
             categorie.setStyle("");
             DAOTarif daoTarif = new DAOTarif();
 
@@ -46,14 +48,48 @@ public class ControlerModifierTarif {
             Stage stage = (Stage) modifierButton.getScene().getWindow();
             stage.close();
         }
-        else
-        {
-            categorie.setStyle("-fx-border-color: red ;");
-        }
     }
 
     public void annuler(ActionEvent actionEvent) {
         Stage stage = (Stage) annulerButton.getScene().getWindow();
         stage.close();
+    }
+
+    public boolean testChamp(){
+        boolean valide = true;
+
+        if(code.getText().isEmpty())
+        {
+            code.setStyle("-fx-border-color: red ;");
+            valide = false;
+        }
+        else
+            code.setStyle("");
+
+        if(!Pattern.matches("[0-9\\.]++$", prix.getText()) || prix.getText().isEmpty()) {
+            prix.setStyle("-fx-border-color: red ;");
+            valide = false;
+        }
+        else {
+            try {
+                Double.parseDouble(prix.getText());
+                prix.setStyle("");
+            }
+            catch(NumberFormatException e)
+            {
+                prix.setStyle("-fx-border-color: red ;");
+                valide = false;
+            }
+        }
+
+        if(categorie.getValue() == null)
+        {
+            categorie.setStyle("-fx-border-color: red ;");
+            valide = false;
+        }
+        else
+            categorie.setStyle("");
+
+        return valide;
     }
 }

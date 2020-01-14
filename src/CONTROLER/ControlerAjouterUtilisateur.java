@@ -25,17 +25,50 @@ public class ControlerAjouterUtilisateur {
     }
 
     public void ajouter(ActionEvent actionEvent) {
-        DAOPersonne daoPersonne = new DAOPersonne();
+        boolean valide = testChamp();
+        if(valide) {
+            DAOPersonne daoPersonne = new DAOPersonne();
 
-        Personne personneAAjouter = new Personne(numSecu.getText(),adresse.getText(),numTel.getText(),null);
-        daoPersonne.create(personneAAjouter);
+            Personne personneAAjouter = new Personne(numSecu.getText(), adresse.getText(), numTel.getText(), null);
+            daoPersonne.create(personneAAjouter);
 
-        Stage stage = (Stage) ajouterButton.getScene().getWindow();
-        stage.close();
+            Stage stage = (Stage) ajouterButton.getScene().getWindow();
+            stage.close();
+        }
     }
 
     public void annuler(ActionEvent actionEvent) {
         Stage stage = (Stage) annulerButton.getScene().getWindow();
         stage.close();
+    }
+
+    public boolean testChamp(){
+        boolean valide = true;
+
+        if(numSecu.getText().isEmpty())
+        {
+            numSecu.setStyle("-fx-border-color: red ;");
+            valide = false;
+        }
+        else
+            numSecu.setStyle("");
+
+        if(adresse.getText().isEmpty())
+        {
+            adresse.setStyle("-fx-border-color: red ;");
+            valide = false;
+        }
+        else
+            adresse.setStyle("");
+
+        if(numTel.getText().isEmpty())
+        {
+            numTel.setStyle("-fx-border-color: red ;");
+            valide = false;
+        }
+        else
+            numTel.setStyle("");
+
+        return valide;
     }
 }

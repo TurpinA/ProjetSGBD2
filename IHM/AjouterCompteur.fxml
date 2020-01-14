@@ -52,7 +52,7 @@
                         <Insets right="26.0" />
                      </HBox.margin>
                   </Label>
-                  <DatePicker fx:id="dateActivation" HBox.hgrow="ALWAYS" />
+                  <DatePicker fx:id="dateActivation" editable="false" HBox.hgrow="ALWAYS" />
                </children>
                <VBox.margin>
                   <Insets left="10.0" right="10.0" />

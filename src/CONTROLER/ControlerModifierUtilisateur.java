@@ -28,18 +28,51 @@ public class ControlerModifierUtilisateur {
     }
 
     public void modifier(ActionEvent actionEvent) {
-        DAOPersonne daoPersonne = new DAOPersonne();
+        boolean valide = testChamp();
+        if(valide) {
+            DAOPersonne daoPersonne = new DAOPersonne();
 
-        Personne personneAAjouter = new Personne(numSecu.getText(),adresse.getText(),numTel.getText(),null);
-        personneAAjouter.setID(personneSelectionne.getID());
-        daoPersonne.update(personneAAjouter);
+            Personne personneAAjouter = new Personne(numSecu.getText(), adresse.getText(), numTel.getText(), null);
+            personneAAjouter.setID(personneSelectionne.getID());
+            daoPersonne.update(personneAAjouter);
 
-        Stage stage = (Stage) modifierButton.getScene().getWindow();
-        stage.close();
+            Stage stage = (Stage) modifierButton.getScene().getWindow();
+            stage.close();
+        }
     }
 
     public void annuler(ActionEvent actionEvent) {
         Stage stage = (Stage) annulerButton.getScene().getWindow();
         stage.close();
+    }
+
+    public boolean testChamp(){
+        boolean valide = true;
+
+        if(numSecu.getText().isEmpty())
+        {
+            numSecu.setStyle("-fx-border-color: red ;");
+            valide = false;
+        }
+        else
+            numSecu.setStyle("");
+
+        if(adresse.getText().isEmpty())
+        {
+            adresse.setStyle("-fx-border-color: red ;");
+            valide = false;
+        }
+        else
+            adresse.setStyle("");
+
+        if(numTel.getText().isEmpty())
+        {
+            numTel.setStyle("-fx-border-color: red ;");
+            valide = false;
+        }
+        else
+            numTel.setStyle("");
+
+        return valide;
     }
 }

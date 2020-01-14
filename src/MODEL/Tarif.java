@@ -58,4 +58,9 @@ public class Tarif {
     public void setCategoriesTarif(CategoriesTarif categoriesTarif) {
         this.categoriesTarif = categoriesTarif;
     }
+
+    @Override
+    public String toString(){
+        return String.valueOf(code);
+    }
 }

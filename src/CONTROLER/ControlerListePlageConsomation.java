@@ -9,15 +9,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.util.Date;
 import java.util.Optional;
@@ -36,6 +34,27 @@ public class ControlerListePlageConsomation {
     public void initialize() {
         idColumn.setCellValueFactory(new PropertyValueFactory<PlageHoraire, String>("ID"));
         dateColumn.setCellValueFactory(new PropertyValueFactory<PlageHoraire, Date>("date"));
+
+        dateColumn.setCellFactory(column -> {
+            TableCell<PlageHoraire, Date> cell = new TableCell<PlageHoraire, Date>() {
+                private SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+
+                @Override
+                protected void updateItem(Date item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if(empty) {
+                        setText(null);
+                    }
+                    else {
+                        this.setText(format.format(item));
+
+                    }
+                }
+            };
+
+            return cell;
+        });
+
         debutColumn.setCellValueFactory(new PropertyValueFactory<PlageHoraire, LocalTime>("heureDebut"));
         finColumn.setCellValueFactory(new PropertyValueFactory<PlageHoraire, LocalTime>("heureFin"));
         consomationColumn.setCellValueFactory(new PropertyValueFactory<PlageHoraire, String>("puissanceConsommee"));
@@ -82,7 +101,7 @@ public class ControlerListePlageConsomation {
         Parent root;
         Stage stage = new Stage();
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(new File("IHM/Ajouter plage de consomation.fxml").toURI().toURL());
+            FXMLLoader fxmlLoader = new FXMLLoader(new File("IHM/AjouterPlageDeConsomation.fxml").toURI().toURL());
             root = fxmlLoader.load();
             stage.setTitle("Ajouter une plage de consomation");
             stage.setScene(new Scene(root));
@@ -112,5 +131,14 @@ public class ControlerListePlageConsomation {
             daoPlageHoraire.delete(plageHoraireASupprimer);
             tableView.getItems().removeAll(tableView.getSelectionModel().getSelectedItems());
         }
+    }
+
+    public void rechercheTarifButton(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(new File("IHM/RechercheParTarif.fxml").toURI().toURL());
+        Parent root = fxmlLoader.load();
+        Scene scene = new Scene(root);
+        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show();
     }
 }

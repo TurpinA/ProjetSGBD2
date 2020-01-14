@@ -152,4 +152,13 @@ public class ControlerListeCompteur {
 
     public void rechercheConsomationButton(ActionEvent actionEvent) {
     }
+
+    public void rechercheTarifButton(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(new File("IHM/RechercheParTarif.fxml").toURI().toURL());
+        Parent root = fxmlLoader.load();
+        Scene scene = new Scene(root);
+        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show();
+    }
 }
