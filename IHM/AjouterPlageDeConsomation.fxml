@@ -48,7 +48,7 @@
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <JFXTimePicker fx:id="heureDebut" defaultColor="DIMGRAY">
+                        <JFXTimePicker fx:id="heureDebut" defaultColor="DIMGRAY" maxHeight="28.0" maxWidth="171.2" minHeight="28.0" minWidth="171.2" prefHeight="28.0" prefWidth="171.2" HBox.hgrow="NEVER">
                            <HBox.margin>
                               <Insets left="5.0" />
                            </HBox.margin>
@@ -62,7 +62,7 @@
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <JFXTimePicker fx:id="heureFin" defaultColor="DIMGRAY">
+                        <JFXTimePicker fx:id="heureFin" defaultColor="DIMGRAY" maxHeight="28.0" maxWidth="171.2" minHeight="28.0" minWidth="171.2" prefHeight="28.0" prefWidth="171.2" HBox.hgrow="NEVER">
                            <HBox.margin>
                               <Insets left="5.0" />
                            </HBox.margin>

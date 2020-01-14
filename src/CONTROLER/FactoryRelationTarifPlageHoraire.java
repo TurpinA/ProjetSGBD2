@@ -14,10 +14,10 @@ import static java.time.temporal.ChronoUnit.MINUTES;
 
 public class FactoryRelationTarifPlageHoraire {
 
-    public List<RelationTarifPlageHoraire> CreateFromPlageHoraire(PlageHoraire plageHoraire, Double consommation, Tarif tarifCreux, Tarif tarifPlein){
+    public static List<RelationTarifPlageHoraire> CreateFromPlageHoraire(PlageHoraire plageHoraire, Tarif tarifCreux, Tarif tarifPlein){
 
         List<RelationTarifPlageHoraire> result = new ArrayList<RelationTarifPlageHoraire>();
-        Double powerPerMinute = consommation/ MINUTES.between(plageHoraire.getHeureDebut(),plageHoraire.getHeureFin());
+        Double powerPerMinute = plageHoraire.getPuissanceConsommee()/ MINUTES.between(plageHoraire.getHeureDebut(),plageHoraire.getHeureFin());
 
         ArrayList<Pair<Tarif,ArrayList<LocalTime>>> ListHoraires = new ArrayList<>();
         ArrayList<LocalTime> horaire1 = new ArrayList<>();

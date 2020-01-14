@@ -69,7 +69,13 @@ public class ControlerListeTarifs {
     public void listTarifButton(ActionEvent actionEvent){
     }
 
-    public void rechercheConsomationButton(ActionEvent actionEvent) {
+    public void rechercheConsomationButton(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(new File("IHM/RechercheConsomation.fxml").toURI().toURL());
+        Parent root = fxmlLoader.load();
+        Scene scene = new Scene(root);
+        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show();
     }
 
     public void ajouterButton(ActionEvent actionEvent) {

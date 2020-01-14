@@ -2,9 +2,8 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
@@ -14,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="440.0" prefWidth="807.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CONTROLER.ControlerRechercheParTarif">
+<AnchorPane prefHeight="441.0" prefWidth="669.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CONTROLER.ControlerRechercheConsomation">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="150.0" style="-fx-background-color: grey;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="40.0">
          <children>
@@ -50,12 +49,12 @@
                         <Font name="Noto Sans Regular" size="12.0" />
                      </font>
                   </Button>
-                  <Button fx:id="rechercheTarif" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#rechercheTarifButton" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: rgb(48, 199, 148); -fx-border-style: none; -fx-background-radius: 0;" text="Recherche par Tarif" textFill="WHITE">
+                  <Button fx:id="rechercheTarif" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#rechercheTarifButton" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: rgb(74,87,111); -fx-border-style: none; -fx-background-radius: 0;" text="Recherche par Tarif" textFill="WHITE">
                      <font>
                         <Font name="Noto Sans Regular" size="12.0" />
                      </font>
                   </Button>
-                  <Button fx:id="rechercheConsomation" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#rechercheConsomationButton" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: rgb(74,87,111); -fx-border-style: none; -fx-background-radius: 0;" text="Recherche Consomation" textFill="WHITE">
+                  <Button fx:id="rechercheConsomation" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#rechercheConsomationButton" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: rgb(48, 199, 148); -fx-border-style: none; -fx-background-radius: 0;" text="Recherche Consomation" textFill="WHITE">
                      <font>
                         <Font name="Noto Sans Regular" size="11.0" />
                      </font>
@@ -66,31 +65,82 @@
       </AnchorPane>
       <AnchorPane layoutX="151.0" prefHeight="400.0" prefWidth="656.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="151.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
          <children>
-            <TableView fx:id="tableView" layoutX="7.0" layoutY="111.0" prefHeight="275.0" prefWidth="646.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
-              <columns>
-                  <TableColumn fx:id="dateColumn" prefWidth="137.0" text="Date" />
-                  <TableColumn fx:id="debutColumn" prefWidth="137.0" text="Début" />
-                  <TableColumn fx:id="finColumn" prefWidth="137.0" text="Fin" />
-                  <TableColumn fx:id="consomationColumn" prefWidth="120.0" text="Consomation" />
-                  <TableColumn fx:id="prixColumn" prefWidth="131.199951171875" text="Prix" />
-              </columns>
-            </TableView>
             <HBox alignment="CENTER" layoutX="184.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Label text="Code Tarif :">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
+                  <VBox prefHeight="100.0" prefWidth="393.0">
+                     <children>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label text="Numéro compteur électrique :">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <TextField fx:id="numCompteur" prefHeight="26.0" prefWidth="174.0">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </TextField>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label text="Date :">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <DatePicker fx:id="date" />
+                           </children>
+                        </HBox>
+                     </children>
                      <HBox.margin>
-                        <Insets right="5.0" />
+                        <Insets right="30.0" />
                      </HBox.margin>
-                  </Label>
-                  <TextField fx:id="codeTarif">
-                     <HBox.margin>
-                        <Insets right="20.0" />
-                     </HBox.margin>
-                  </TextField>
+                  </VBox>
                   <Button mnemonicParsing="false" onAction="#rechercherButton" text="Rechercher" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="201.0" layoutY="102.0" prefHeight="200.0" prefWidth="656.0" AnchorPane.bottomAnchor="98.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="102.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="249.0" prefWidth="126.0" spacing="18.0">
+                     <children>
+                        <Label text="Consomation KWh :">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label text="Prix :">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label text="Prix Tarif pleins :">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label text="Prix Tarif creux :">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="249.0" prefWidth="126.0" spacing="10.0">
+                     <children>
+                        <TextField editable="false" style="-fx-text-box-border: transparent;" />
+                        <TextField editable="false" style="-fx-text-box-border: transparent;" />
+                        <TextField editable="false" style="-fx-text-box-border: transparent;" />
+                        <TextField editable="false" style="-fx-text-box-border: transparent;" />
+                     </children>
+                  </VBox>
                </children>
             </HBox>
          </children></AnchorPane>

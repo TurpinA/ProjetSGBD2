@@ -72,9 +72,9 @@ public class ControlerAjouterPlageConsomation {
             plageHoraireAAjouter.setHeureFin(heureFin.getValue());
             plageHoraireAAjouter.setPuissanceConsommee(Double.valueOf(consomation.getText()));
 
-            daoPlageHoraire.create(plageHoraireAAjouter);
+            plageHoraireAAjouter.getRelationTarifPlageHoraires().addAll(FactoryRelationTarifPlageHoraire.CreateFromPlageHoraire(plageHoraireAAjouter,tarifCreux.getValue(),tarifPlein.getValue()));
 
-            //TO DO AJOUTER FONCTION QUI AJOUTE UN CREER UN OBJET RELATION TARIF + PLAGE HORAIRE
+            daoPlageHoraire.create(plageHoraireAAjouter);
 
             Stage stage = (Stage) ajouterButton.getScene().getWindow();
             stage.close();
