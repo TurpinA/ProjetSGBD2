@@ -50,8 +50,11 @@ public class FactoryRelationTarifPlageHoraire {
                 if((parcours.isAfter(heureDebut) || parcours.equals(heureDebut)) && parcours.isBefore(heureFin)){
                     if(plageHoraire.getHeureFin().isBefore(heureFin)){
                         result.add(new RelationTarifPlageHoraire(plageHoraire,pair.getKey(),powerPerMinute*MINUTES.between(parcours,plageHoraire.getHeureFin())));
+                        parcours = plageHoraire.getHeureFin();
+                        break;
                     }else{
                         result.add(new RelationTarifPlageHoraire(plageHoraire,pair.getKey(),powerPerMinute*MINUTES.between(parcours,heureFin)));
+                        parcours = heureFin;
                     }
                 }
             }
