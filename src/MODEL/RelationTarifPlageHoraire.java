@@ -34,5 +34,19 @@ public class RelationTarifPlageHoraire {
         this.consommation = consommation;
     }
 
-    public Tarif getTarif(){return tarif;}
+    public int getPlageHoraire_Tarif_ID() {
+        return PlageHoraire_Tarif_ID;
+    }
+
+    public void setPlageHoraire_Tarif_ID(int plageHoraire_Tarif_ID) {
+        PlageHoraire_Tarif_ID = plageHoraire_Tarif_ID;
+    }
+
+    public PlageHoraire getPlageHoraire() {
+        return plageHoraire;
+    }
+
+    public Tarif getTarif() {
+        return tarif;
+    }
 }

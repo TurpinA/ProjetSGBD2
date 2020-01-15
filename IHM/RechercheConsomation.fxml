@@ -135,10 +135,10 @@
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="249.0" prefWidth="126.0" spacing="10.0">
                      <children>
-                        <TextField editable="false" style="-fx-text-box-border: transparent;" />
-                        <TextField editable="false" style="-fx-text-box-border: transparent;" />
-                        <TextField editable="false" style="-fx-text-box-border: transparent;" />
-                        <TextField editable="false" style="-fx-text-box-border: transparent;" />
+                        <TextField fx:id="consomation" editable="false" style="-fx-text-box-border: transparent;" />
+                        <TextField fx:id="prix" editable="false" style="-fx-text-box-border: transparent;" />
+                        <TextField fx:id="tarifPleins" editable="false" style="-fx-text-box-border: transparent;" />
+                        <TextField fx:id="tarifCreux" editable="false" style="-fx-text-box-border: transparent;" />
                      </children>
                   </VBox>
                </children>

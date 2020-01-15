@@ -40,6 +40,19 @@ public class DAOTarif {
         return tarifToFind;
     }
 
+    public Tarif findNum(String codeTarif){
+        main.em.getTransaction().begin();
+        String hql = "FROM Tarif tarif where tarif.code = " + codeTarif;
+        Query query = main.em.createQuery(hql);
+        Tarif tarifToFind = (Tarif) query.getSingleResult();
+        main.em.getTransaction().commit();
+
+        if(tarifToFind == null)
+            throw new NoSuchElementException("L'objet Tarif est introuvable dans la base de données");
+
+        return tarifToFind;
+    }
+
     public List<Tarif> getAll(){
         main.em.getTransaction().begin();
         String hql = "FROM Tarif";

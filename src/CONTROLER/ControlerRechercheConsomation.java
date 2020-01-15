@@ -1,16 +1,28 @@
 package CONTROLER;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
 
 public class ControlerRechercheConsomation {
+
+    @FXML   private TextField numCompteur;
+    @FXML   private DatePicker date;
+
+    @FXML   private TextField consomation;
+    @FXML   private TextField prix;
+    @FXML   private TextField tarifPleins;
+    @FXML   private TextField tarifCreux;
 
     public void ListUtiButton(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(new File("IHM/ListeUtilisateur.fxml").toURI().toURL());
@@ -60,6 +72,16 @@ public class ControlerRechercheConsomation {
     public void rechercheConsomationButton(ActionEvent actionEvent) {
     }
 
-    public void rechercherButton(ActionEvent actionEvent) {
+    public void rechercherButton(ActionEvent actionEvent) throws ParseException {
+        DAOPlageHoraire daoPlageHoraire = new DAOPlageHoraire();
+        DAOCompteurElectrique daoCompteurElectrique = new DAOCompteurElectrique();
+
+        Double[] result = daoPlageHoraire.getFromCompteurAndDate(daoCompteurElectrique.findNum(numCompteur.getText()),date.getValue());
+
+        if(result[0] != 0.0 && result[1] != 0.0)
+        {
+            consomation.setText(String.valueOf(result[0]));
+            prix.setText(String.valueOf(result[1]));
+        }
     }
 }

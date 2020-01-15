@@ -1,9 +1,6 @@
 package CONTROLER;
 
-import MODEL.CompteurElectrique;
-import MODEL.Personne;
-import MODEL.PlageHoraire;
-import MODEL.Tarif;
+import MODEL.*;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTimePicker;
 import javafx.event.ActionEvent;
@@ -18,7 +15,9 @@ import java.sql.SQLException;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.regex.Pattern;
 
 public class ControlerAjouterPlageConsomation {
@@ -64,9 +63,11 @@ public class ControlerAjouterPlageConsomation {
             plageHoraireAAjouter.setCompteur(numeroCompteur.getValue());
 
             LocalDate localDate = date.getValue();
-            Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.of("UTC")));
-            Date date = Date.from(instant);
-            plageHoraireAAjouter.setDate(date);
+            Calendar calendar = Calendar.getInstance();
+            calendar.clear();
+            calendar.set(localDate.getYear(), localDate.getMonthValue()-1, localDate.getDayOfMonth());
+            Date newDate = calendar.getTime();
+            plageHoraireAAjouter.setDate(newDate);
 
             plageHoraireAAjouter.setHeureDebut(heureDebut.getValue());
             plageHoraireAAjouter.setHeureFin(heureFin.getValue());
@@ -75,6 +76,14 @@ public class ControlerAjouterPlageConsomation {
             plageHoraireAAjouter.getRelationTarifPlageHoraires().addAll(FactoryRelationTarifPlageHoraire.CreateFromPlageHoraire(plageHoraireAAjouter,tarifCreux.getValue(),tarifPlein.getValue()));
 
             daoPlageHoraire.create(plageHoraireAAjouter);
+
+            DAORelationTarifPlageHoraire daoRelationTarifPlageHoraire = new DAORelationTarifPlageHoraire();
+
+            Iterator iterator = plageHoraireAAjouter.getRelationTarifPlageHoraires().iterator();
+            for(int i = 0;i<plageHoraireAAjouter.getRelationTarifPlageHoraires().size();i++)
+            {
+                daoRelationTarifPlageHoraire.create((RelationTarifPlageHoraire)iterator.next());
+            }
 
             Stage stage = (Stage) ajouterButton.getScene().getWindow();
             stage.close();

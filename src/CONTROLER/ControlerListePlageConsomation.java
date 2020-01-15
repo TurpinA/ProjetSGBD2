@@ -3,6 +3,7 @@ package CONTROLER;
 import MODEL.CompteurElectrique;
 import MODEL.Personne;
 import MODEL.PlageHoraire;
+import MODEL.RelationTarifPlageHoraire;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,6 +19,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.Optional;
 
 public class ControlerListePlageConsomation {
@@ -133,7 +135,15 @@ public class ControlerListePlageConsomation {
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
+            DAORelationTarifPlageHoraire daoRelationTarifPlageHoraire = new DAORelationTarifPlageHoraire();
             DAOPlageHoraire daoPlageHoraire = new DAOPlageHoraire();
+
+            Iterator iterator = plageHoraireASupprimer.getRelationTarifPlageHoraires().iterator();
+            for(int i = 0;i<plageHoraireASupprimer.getRelationTarifPlageHoraires().size();i++)
+            {
+                daoRelationTarifPlageHoraire.delete((RelationTarifPlageHoraire)iterator.next());
+            }
+
             daoPlageHoraire.delete(plageHoraireASupprimer);
             tableView.getItems().removeAll(tableView.getSelectionModel().getSelectedItems());
         }

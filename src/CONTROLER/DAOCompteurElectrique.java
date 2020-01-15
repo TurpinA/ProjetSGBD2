@@ -1,6 +1,7 @@
 package CONTROLER;
 
 import MODEL.CompteurElectrique;
+import MODEL.Tarif;
 
 import javax.persistence.Query;
 import java.util.ArrayList;
@@ -50,5 +51,18 @@ public class DAOCompteurElectrique {
         List<CompteurElectrique> listCompteur = query.getResultList();
         main.em.getTransaction().commit();
         return listCompteur;
+    }
+
+    public CompteurElectrique findNum(String numCompteur){
+        main.em.getTransaction().begin();
+        String hql = "FROM CompteurElectrique compteur where compteur.numeroCompteur = " + numCompteur;
+        Query query = main.em.createQuery(hql);
+        CompteurElectrique compteurElectriqueToFind = (CompteurElectrique) query.getSingleResult();
+        main.em.getTransaction().commit();
+
+        if(compteurElectriqueToFind == null)
+            throw new NoSuchElementException("L'objet Tarif est introuvable dans la base de données");
+
+        return compteurElectriqueToFind;
     }
 }

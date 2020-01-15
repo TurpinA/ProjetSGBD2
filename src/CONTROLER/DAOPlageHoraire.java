@@ -1,17 +1,14 @@
 package CONTROLER;
 
 import MODEL.CompteurElectrique;
-import MODEL.Personne;
 import MODEL.PlageHoraire;
 import MODEL.RelationTarifPlageHoraire;
 
 import javax.persistence.Query;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 public class DAOPlageHoraire {
 
@@ -57,23 +54,25 @@ public class DAOPlageHoraire {
         return listPlageHorraire;
     }
 
-    public Double[] getFromCompteurAndDate(CompteurElectrique compteur, LocalDate date){
+    public Double[] getFromCompteurAndDate(CompteurElectrique compteur, LocalDate date) throws ParseException {
+        Calendar calendar = Calendar.getInstance();
+        calendar.clear();
+        calendar.set(date.getYear(), date.getMonthValue()-1, date.getDayOfMonth());
+        Date dateGood = calendar.getTime();
 
         main.em.getTransaction().begin();
-        String datehql = date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")) + " 00:00:00";
-        String hql = "from PlageHoraire as plage where plage.Compteur.numeroCompteur = "+compteur.getNumeroCompteur()+" and plage.date = "+datehql+"";
+        String hql = "FROM PlageHoraire plage where plage.Compteur.numeroCompteur = :compteurNum and plage.date = :date";
         Query query = main.em.createQuery(hql);
-        @SuppressWarnings("unchecked")
+        query.setParameter("compteurNum",compteur.getNumeroCompteur());
+        query.setParameter("date",dateGood);
         List<PlageHoraire> listPlageHoraire = query.getResultList();
         main.em.getTransaction().commit();
 
         Double puissanceconsommer = 0.0;
         Double prix = 0.0;
 
-        for (PlageHoraire plage :
-                listPlageHoraire) {
-            for (RelationTarifPlageHoraire relation :
-                    plage.getRelationTarifPlageHoraires()) {
+        for (PlageHoraire plage : listPlageHoraire) {
+            for (RelationTarifPlageHoraire relation : plage.getRelationTarifPlageHoraires()) {
                 puissanceconsommer += relation.getConsommation();
                 prix = prix + relation.getConsommation()*relation.getTarif().getPrix();
             }

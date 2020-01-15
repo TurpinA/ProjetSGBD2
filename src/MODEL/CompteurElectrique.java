@@ -78,4 +78,9 @@ public class CompteurElectrique {
     public void setConsommation(List<PlageHoraire> consomation) {
         this.consommation = consomation;
     }
+
+    @Override
+    public String toString(){
+        return String.valueOf(numeroCompteur);
+    }
 }
