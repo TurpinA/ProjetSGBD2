@@ -1,5 +1,7 @@
-package CONTROLER;
+package VIEW;
 
+import CONTROLER.DAOCompteurElectrique;
+import CONTROLER.DAOPersonne;
 import MODEL.CompteurElectrique;
 import MODEL.Personne;
 import javafx.event.ActionEvent;

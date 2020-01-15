@@ -1,5 +1,6 @@
-package CONTROLER;
+package VIEW;
 
+import CONTROLER.*;
 import MODEL.*;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTimePicker;
@@ -66,6 +67,9 @@ public class ControlerAjouterPlageConsomation {
             Calendar calendar = Calendar.getInstance();
             calendar.clear();
             calendar.set(localDate.getYear(), localDate.getMonthValue()-1, localDate.getDayOfMonth());
+            calendar.set(Calendar.HOUR, 1);
+            calendar.set(Calendar.MINUTE, 0);
+            calendar.set(Calendar.SECOND, 0);
             Date newDate = calendar.getTime();
             plageHoraireAAjouter.setDate(newDate);
 

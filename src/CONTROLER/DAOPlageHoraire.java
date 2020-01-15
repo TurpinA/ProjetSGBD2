@@ -58,6 +58,7 @@ public class DAOPlageHoraire {
         Calendar calendar = Calendar.getInstance();
         calendar.clear();
         calendar.set(date.getYear(), date.getMonthValue()-1, date.getDayOfMonth());
+        calendar.set(Calendar.HOUR, 1);
         Date dateGood = calendar.getTime();
 
         main.em.getTransaction().begin();

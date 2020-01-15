@@ -1,6 +1,6 @@
-package CONTROLER;
+package VIEW;
 
-import MODEL.CompteurElectrique;
+import CONTROLER.DAOPersonne;
 import MODEL.Personne;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,8 +14,6 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Optional;
 
 public class ControlerListeUtilisateur {

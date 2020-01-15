@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="441.0" prefWidth="669.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CONTROLER.ControlerRechercheConsomation">
+<AnchorPane prefHeight="441.0" prefWidth="669.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VIEW.ControlerRechercheConsomation">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="150.0" style="-fx-background-color: grey;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="40.0">
          <children>
@@ -121,24 +121,12 @@
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Label>
-                        <Label text="Prix Tarif pleins :">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Label>
-                        <Label text="Prix Tarif creux :">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Label>
                      </children>
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="249.0" prefWidth="126.0" spacing="10.0">
                      <children>
                         <TextField fx:id="consomation" editable="false" style="-fx-text-box-border: transparent;" />
                         <TextField fx:id="prix" editable="false" style="-fx-text-box-border: transparent;" />
-                        <TextField fx:id="tarifPleins" editable="false" style="-fx-text-box-border: transparent;" />
-                        <TextField fx:id="tarifCreux" editable="false" style="-fx-text-box-border: transparent;" />
                      </children>
                   </VBox>
                </children>

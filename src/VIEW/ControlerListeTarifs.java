@@ -1,8 +1,7 @@
-package CONTROLER;
+package VIEW;
 
+import CONTROLER.DAOTarif;
 import MODEL.CategoriesTarif;
-import MODEL.CompteurElectrique;
-import MODEL.Personne;
 import MODEL.Tarif;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,8 +15,6 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Optional;
 
 public class ControlerListeTarifs {

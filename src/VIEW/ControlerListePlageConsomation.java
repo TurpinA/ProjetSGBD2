@@ -1,5 +1,7 @@
-package CONTROLER;
+package VIEW;
 
+import CONTROLER.DAOPlageHoraire;
+import CONTROLER.DAORelationTarifPlageHoraire;
 import MODEL.CompteurElectrique;
 import MODEL.Personne;
 import MODEL.PlageHoraire;

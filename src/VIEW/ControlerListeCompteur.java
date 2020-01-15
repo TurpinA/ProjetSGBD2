@@ -1,5 +1,6 @@
-package CONTROLER;
+package VIEW;
 
+import CONTROLER.DAOCompteurElectrique;
 import MODEL.CompteurElectrique;
 import MODEL.Personne;
 import javafx.event.ActionEvent;
@@ -14,7 +15,6 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Optional;

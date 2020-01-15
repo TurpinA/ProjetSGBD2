@@ -1,5 +1,7 @@
-package CONTROLER;
+package VIEW;
 
+import CONTROLER.DAOTarif;
+import CONTROLER.Recherche;
 import MODEL.RelationTarifPlageHoraire;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;

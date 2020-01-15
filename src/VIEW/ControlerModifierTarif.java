@@ -1,52 +1,52 @@
-package CONTROLER;
+package VIEW;
 
+import CONTROLER.DAOTarif;
 import MODEL.CategoriesTarif;
-import MODEL.CompteurElectrique;
-import MODEL.Personne;
 import MODEL.Tarif;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.sql.SQLException;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
 import java.util.regex.Pattern;
 
-public class ControlerAjouterTarif {
+public class ControlerModifierTarif {
+
+    public static Tarif tarifSelectionne;
 
     @FXML   private TextField code;
     @FXML   private TextField prix;
     @FXML   private ComboBox<CategoriesTarif> categorie;
 
-    @FXML   private Button ajouterButton;
+    @FXML   private Button modifierButton;
     @FXML   private Button annulerButton;
 
     @FXML
     public void initialize() throws SQLException {
+        code.setText(tarifSelectionne.getCode());
+        prix.setText(String.valueOf(tarifSelectionne.getPrix()));
+        categorie.setValue(tarifSelectionne.getCategoriesTarif());
         categorie.getItems().addAll(CategoriesTarif.values());
     }
 
-    public void ajouter(ActionEvent actionEvent) {
+    public void modifier(ActionEvent actionEvent) {
         boolean valide = testChamp();
-
         if(valide) {
+            categorie.setStyle("");
             DAOTarif daoTarif = new DAOTarif();
 
             Tarif tarifAAjouter = new Tarif();
             tarifAAjouter.setCode(code.getText());
             tarifAAjouter.setPrix(Double.valueOf(prix.getText()));
             tarifAAjouter.setCategoriesTarif(categorie.getValue());
+            tarifAAjouter.setID(tarifSelectionne.getID());
 
-            daoTarif.create(tarifAAjouter);
+            daoTarif.update(tarifAAjouter);
 
-            Stage stage = (Stage) ajouterButton.getScene().getWindow();
+            Stage stage = (Stage) modifierButton.getScene().getWindow();
             stage.close();
         }
     }

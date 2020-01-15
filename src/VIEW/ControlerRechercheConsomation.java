@@ -1,5 +1,7 @@
-package CONTROLER;
+package VIEW;
 
+import CONTROLER.DAOCompteurElectrique;
+import CONTROLER.DAOPlageHoraire;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -82,6 +84,11 @@ public class ControlerRechercheConsomation {
         {
             consomation.setText(String.valueOf(result[0]));
             prix.setText(String.valueOf(result[1]));
+        }
+        else
+        {
+            consomation.setText("0");
+            prix.setText("0");
         }
     }
 }
